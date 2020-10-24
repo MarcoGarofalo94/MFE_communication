@@ -28,19 +28,11 @@ Installing other dependencies:
 npm install --save react react-dom
 ```
 
-```bash
-pip install foobar
-```
-
 ## Usage
-
-```python
-import foobar
-
-foobar.pluralize('word') # returns 'words'
-foobar.pluralize('goose') # returns 'geese'
-foobar.singularize('phenomena') # returns 'phenomenon'
-```
+1. Download the boilerplate in your dev environment:
+    ```git
+        git clone 
+    ```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
