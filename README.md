@@ -2,7 +2,7 @@
 
 This is a boilerplate I set up to easily start developing a Nextcloud App with React and Typescript
 
-## Installation
+## Reproducing the steps
 
 ### Using yarn:
 
@@ -30,9 +30,19 @@ npm install --save react react-dom
 
 ## Usage
 1. Download the boilerplate in your dev environment:
-    ```git
-        git clone 
-    ```
+```git
+git clone https://gitlab.com/MarcoGarofalo94/react-typescript-nextcloud-boilerplate.git
+```
+2. Installig dependencies:
+```yarn
+yarn install
+```
+    or
+```npm
+npm install
+```
+
+
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
