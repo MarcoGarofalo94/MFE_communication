@@ -28,6 +28,15 @@ Installing other dependencies:
 npm install --save react react-dom
 ```
 
+Creating a **config** folder where to put all the configurations files:
+```bash
+mkdir config
+```
+
+Inside the config folder we create different files:
+- webpack.config.js
+- tsconfig.json
+
 ## Usage
 1. Download the boilerplate in your dev environment:
 ```git
@@ -37,7 +46,7 @@ git clone https://gitlab.com/MarcoGarofalo94/react-typescript-nextcloud-boilerpl
 ```yarn
 yarn install
 ```
-    or
+OR
 ```npm
 npm install
 ```
