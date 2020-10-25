@@ -7,24 +7,24 @@ This is a boilerplate I set up to easily start developing a Nextcloud App with R
 ### Using yarn:
 
 Installing dev dependencies
-```yarn
+```bash
 yarn add --dev @types/react @types/react-dom awesome-typescript-loader css-loader html-webpack-plugin mini-css-extract-plugin source-map-loader typescript webpack webpack-cli webpack-dev-server
 ```
 
 Installing other dependencies:
-```yarn
+```bash
 yarn add react react-dom
 ```
 
 ### Using npm
 
 Installing dev dependencies:
-```npm
+```bash
 npm install --save-dev @types/react @types/react-dom awesome-typescript-loader css-loader html-webpack-plugin mini-css-extract-plugin source-map-loader typescript webpack webpack-cli webpack-dev-server
 ```
 
 Installing other dependencies:
-```npm
+```bash
 npm install --save react react-dom
 ```
 
@@ -43,11 +43,11 @@ Inside the config folder we create different files:
 git clone https://gitlab.com/MarcoGarofalo94/react-typescript-nextcloud-boilerplate.git
 ```
 2. Installig dependencies:
-```yarn
+```bash
 yarn install
 ```
 OR
-```npm
+```bash
 npm install
 ```
 
