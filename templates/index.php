@@ -11,6 +11,6 @@
         <!-- search - contactsmenu - settingsmenu - ... -->
     </div>
 </header>
-<div id="content" class="app-unimedocs">
+<div id="content" class="app-customappname">
 
 </div>
