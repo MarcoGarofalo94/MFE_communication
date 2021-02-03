@@ -1,14 +1,14 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>customappname</id>
-    <name>CustomAppName</name>
+    <id>customappname1</id>
+    <name>Customappname1</name>
     <summary>This application allows you to reproduce videos from a nextcloud folder.</summary>
     <description><![CDATA[This application allows you to reproduce videos inside a playlist from a nextcloud folder.]]></description>
     <version>0.0.1</version>
     <licence>agpl</licence>
     <author mail="garofalomarco58@gmail.com" >Marco Garofalo</author>
-    <namespace>CustomAppName</namespace>
+    <namespace>Customappname1</namespace>
     <category>multimedia</category>
     <bugs>https://issueTracker.com</bugs>
     <dependencies>
@@ -16,8 +16,8 @@
     </dependencies>
     <navigations>
         <navigation>
-            <name>CustomAppName</name>
-            <route>customappname.page.index</route>
+            <name>Customappname1</name>
+            <route>customappname1.page.index</route>
         </navigation>
     </navigations>
 </info>

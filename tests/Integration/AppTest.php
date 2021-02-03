@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\CustomAppName\Tests\Integration\Controller;
+namespace OCA\Customappname1\Tests\Integration\Controller;
 
 use OCP\AppFramework\App;
 use Test\TestCase;
@@ -17,13 +17,13 @@ class AppTest extends TestCase {
 
     public function setUp() {
         parent::setUp();
-        $app = new App('customappname');
+        $app = new App('customappname1');
         $this->container = $app->getContainer();
     }
 
     public function testAppInstalled() {
         $appManager = $this->container->query('OCP\App\IAppManager');
-        $this->assertTrue($appManager->isInstalled('customappname'));
+        $this->assertTrue($appManager->isInstalled('customappname1'));
     }
 
 }
