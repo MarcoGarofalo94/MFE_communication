@@ -1,5 +1,4 @@
 const path = require("path");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 module.exports = {
   entry: "./src/components/index.tsx",
@@ -8,10 +7,10 @@ module.exports = {
   mode: "development",
   output: {
     path: path.resolve(__dirname, "build"),
-    filename: "bundle.js",
+    filename: "[name].js",
   },
   resolve: {
-    extensions: [".js", ".jsx", ".json", ".ts", ".tsx"],
+    extensions: [".js", ".jsx", ".json", ".ts", ".tsx",".css",".scss"],
   },
   module: {
     rules: [
@@ -37,22 +36,32 @@ module.exports = {
         ]
       },
       {
-        test: /\.css$/,
-        use: [MiniCssExtractPlugin.loader, "css-loader"]
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          // Creates `style` nodes from JS strings
+          "style-loader",
+          // Translates CSS into CommonJS
+          "css-loader",
+          // Compiles Sass to CSS
+          "sass-loader",
+        ],
+      
       },
+
       {
-        test: /\.(png|jpe?g|gif)$/,
+        test: /\.(png|jpe?g|gif|pdf)$/,
         use: [
           {
             loader: 'url-loader',
             options: {
              
-              name: 'img/[name].[ext]',
+              name: 'images/[name].[ext]',
               esModule: false,
             },
           },
         ],
       },
+
       { test: /\.(woff|woff2|eot|ttf|svg)$/, loader: 'url-loader?limit=100000' },
     ]
   },

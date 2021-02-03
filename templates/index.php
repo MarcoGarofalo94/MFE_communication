@@ -1,9 +1,16 @@
 <?php
-script('videoviewer', ['../build/bundle']);
-style('videoviewer', ['../build/bundle']);
+    script('unimedocs', ['../build/main']);
+    style('unimedocs', 'style');
 ?>
 
-<div id="app">
-	
-</div>
+<header>
+    <div class="header-left">
+        <!-- apps menu -->
+    </div>
+    <div class="header-right">
+        <!-- search - contactsmenu - settingsmenu - ... -->
+    </div>
+</header>
+<div id="content" class="app-unimedocs">
 
+</div>

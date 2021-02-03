@@ -1,15 +1,35 @@
-import * as React from "react";
-import { Paper } from "@material-ui/core";
+import React from "react";
 
-import CustomDrawer from './CustomDrawer';
+const App = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        width: "100%",
+      }}
+    >
+   
+      <div id="app-navigation">
+        left lateral menu
+      </div>
+      <div
+        id="app-content"
+        style={{
+          display: "flex",
+          flex: "1",
+          justifyContent: "flex-start",
+          alignItems: "center",
+        }}
+      >
+        main content
+      </div>
+      <div id="app-sidebar" style={{ maxWidth: "350px" }}>
+        right sidebar
+      </div>
+    </div>
+  );
 
-const App = () => (
-  <>
-  <CustomDrawer/>
- 
-  </>
-
-  
-);
+};
 
 export default App;

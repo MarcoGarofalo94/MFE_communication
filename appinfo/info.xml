@@ -1,23 +1,23 @@
 <?xml version="1.0"?>
 <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
       xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>videoviewer</id>
-    <name>Video Viewer</name>
+    <id>customappname</id>
+    <name>CustomAppName</name>
     <summary>This application allows you to reproduce videos from a nextcloud folder.</summary>
     <description><![CDATA[This application allows you to reproduce videos inside a playlist from a nextcloud folder.]]></description>
     <version>0.0.1</version>
     <licence>agpl</licence>
     <author mail="garofalomarco58@gmail.com" >Marco Garofalo</author>
-    <namespace>VideoViewer</namespace>
+    <namespace>CustomAppName</namespace>
     <category>multimedia</category>
     <bugs>https://issueTracker.com</bugs>
     <dependencies>
-        <nextcloud min-version="15" max-version="15"/>
+        <nextcloud min-version="19" max-version="20"/>
     </dependencies>
     <navigations>
         <navigation>
-            <name>Video Viewer</name>
-            <route>videoviewer.page.index</route>
+            <name>CustomAppName</name>
+            <route>customappname.page.index</route>
         </navigation>
     </navigations>
 </info>

@@ -1,5 +1,5 @@
 <?php
-namespace OCA\VideoViewer\Controller;
+namespace OCA\CustomAppName\Controller;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -25,7 +25,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse('videoviewer', 'index');  // templates/index.php
+		return new TemplateResponse('customappname', 'index');  // templates/index.php
 	}
 
 }

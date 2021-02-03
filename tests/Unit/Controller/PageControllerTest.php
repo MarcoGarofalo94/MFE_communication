@@ -1,12 +1,12 @@
 <?php
 
-namespace OCA\VideoViewer\Tests\Unit\Controller;
+namespace OCA\CustomAppName\Tests\Unit\Controller;
 
 use PHPUnit_Framework_TestCase;
 
 use OCP\AppFramework\Http\TemplateResponse;
 
-use OCA\VideoViewer\Controller\PageController;
+use OCA\CustomAppName\Controller\PageController;
 
 
 class PageControllerTest extends PHPUnit_Framework_TestCase {
@@ -17,7 +17,7 @@ class PageControllerTest extends PHPUnit_Framework_TestCase {
 		$request = $this->getMockBuilder('OCP\IRequest')->getMock();
 
 		$this->controller = new PageController(
-			'videoviewer', $request, $this->userId
+			'customappname', $request, $this->userId
 		);
 	}
 

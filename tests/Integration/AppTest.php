@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\VideoViewer\Tests\Integration\Controller;
+namespace OCA\CustomAppName\Tests\Integration\Controller;
 
 use OCP\AppFramework\App;
 use Test\TestCase;
@@ -17,13 +17,13 @@ class AppTest extends TestCase {
 
     public function setUp() {
         parent::setUp();
-        $app = new App('videoviewer');
+        $app = new App('customappname');
         $this->container = $app->getContainer();
     }
 
     public function testAppInstalled() {
         $appManager = $this->container->query('OCP\App\IAppManager');
-        $this->assertTrue($appManager->isInstalled('videoviewer'));
+        $this->assertTrue($appManager->isInstalled('customappname'));
     }
 
 }
