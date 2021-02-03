@@ -1,6 +1,6 @@
 <?php
-    script('unimedocs', ['../build/main']);
-    style('unimedocs', 'style');
+    script('customappname', ['../build/main']);
+    style('customappname', 'style');
 ?>
 
 <header>
