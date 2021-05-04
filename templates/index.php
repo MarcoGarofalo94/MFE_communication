@@ -1,6 +1,6 @@
 <?php
-    script('customappname', ['../build/main']);
-    style('customappname', 'style');
+    script('customappname1', 'index');
+    style('customappname1', 'index');
 ?>
 
 <header>
@@ -11,6 +11,6 @@
         <!-- search - contactsmenu - settingsmenu - ... -->
     </div>
 </header>
-<div id="content" class="app-customappname">
+<div id="content" class="app-customappname2">
 
 </div>
