@@ -1,5 +1,5 @@
 # React TS - Nextcloud Boilerplate
-Place this app in **/<your nextcloud instance folder>/data/custom_apps/
+Place this app in **/[your nextcloud instance folder]/data/custom_apps/
 # About this boilerplate
 
 This boilerplate is a starting point to develop a Nextcloud application using Typescript and React. There are many features involved in this project such as HRM (Hot Module Replacement) and Live Reloading. In order to benefit of these two feature an appropriate (docker) compose architecture has to be se, see __todo: nextcloud instance link repo.
