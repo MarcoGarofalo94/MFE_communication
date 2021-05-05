@@ -55,14 +55,18 @@ In a simple project the TypeScript compiler (tsc) is enough to get started, but 
 [Webpack](https://webpack.js.org/) is a massive project that allows you to bundle all your modules togheter and structure the output type depending on your needs. Webpack has a huge community and well defined documentation that explains every single step you need to follow in order to setup a project, the only downside is the learning curve, is not very easy to get started and reproduce a complex setup. In this project webpack is used to bundle all the code, but also to run the TypeScript compiler. Webpack has some other features like [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) that allows you to serve your code locally during development and have HRM and live reloading.
 
 
-# Usage 
+# Development Usage 
 
-### Using yarn:
-
-Installing dev dependencies
+Go to the corrrct folder
 ```bash
-yarn add --dev @types/react @types/react-dom awesome-typescript-loader css-loader html-webpack-plugin mini-css-extract-plugin source-map-loader typescript webpack webpack-cli webpack-dev-server
+cd <your nextcloud instance>/data/ custom_apps
 ```
+
+Clone the repository with the desired name of the application (don't forget to go to your docker-compose.yml file and enable a new volume containing the application es: ./data/custom_apps/<desidered app name>:/var/www/html/custom_apps/<desidered app name> and restart the compose).
+```bash
+git clone https://gitlab.com/FCRLAB/react-typescript-nextcloud-boilerplate.git <desidered name>
+```
+
 
 Installing other dependencies:
 ```bash
