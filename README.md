@@ -62,19 +62,19 @@ In a simple project the TypeScript compiler (tsc) is enough to get started, but 
 cd <your nextcloud instance>/data/custom_apps
 ```
 
-2. Clone the repository with the desired name of the application (don't forget to go to your docker-compose.yml file and enable a new volume containing the application es: ./data/custom_apps/<desidered app name>:/var/www/html/custom_apps/<desidered app name> and restart the compose).
+2. Clone the repository with the desired name of the application (don't forget to go to your docker-compose.yml file and enable a new volume containing the application es: ./data/custom_apps/<desidered app name>:/var/www/html/custom_apps/<desired app name> and restart the compose).
 ```bash
 git clone https://gitlab.com/FCRLAB/react-typescript-nextcloud-boilerplate.git <desidered name>
 ```
-3. Run the change_app_name.sh script, it will just change the default app name of this project  (customappname1) to the <desired one>. It is an important step in order to setup all the namespaces, if this fails I have bad news.
+3. Run the change_app_name.sh script, it will just change the default app name of this project (customappname1) to the desired one. It is an important step in order to setup all the namespaces, if this fails I have bad news.
 ```bash
-./change_app_name.sh <desidered name>
+./change_app_name.sh <desired name>
 ```
 
 4. Install all the dependencies
 
 ```bash
-yarn  install
+yarn install
 ```
 or
 
@@ -82,52 +82,41 @@ or
 npm install
 ```
 
+# Run
 
+1. To run with HMR just run
 
-Installing other dependencies:
 ```bash
-yarn add react react-dom
+yarn start
 ```
+or 
 
-### Using npm
-
-Installing dev dependencies:
 ```bash
-npm install --save-dev @types/react @types/react-dom awesome-typescript-loader css-loader html-webpack-plugin mini-css-extract-plugin source-map-loader typescript webpack webpack-cli webpack-dev-server
+npm run start
 ```
 
-Installing other dependencies:
+2. Without HMR
+
 ```bash
-npm install --save react react-dom
+yarn dev
 ```
+or 
 
-Creating a **config** folder where to put all the configurations files:
 ```bash
-mkdir config
+npm run dev
 ```
 
-Inside the config folder we create different files:
-- webpack.config.js
-- tsconfig.json
 
-## Usage
-1. Download the boilerplate in your dev environment:
-```git
-git clone https://gitlab.com/MarcoGarofalo94/react-typescript-nextcloud-boilerplate.git
-```
-2. Installig dependencies:
+# Building the app
+
 ```bash
-yarn install
+yarn build
 ```
-OR
+or 
+
 ```bash
-npm install
+npm run build
 ```
-
-
-
-
-## Building the app
 
 The app can be built by using the provided Makefile by running:
 
