@@ -3,14 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 
-import Settings from "./Settings";
-import { store } from "@store-settings/store";
+import AdminSettings from "./AdminSettings";
+import { store } from "app/adminSettings/store/store";
 import "./index.css";
 
 hot(module)(
   ReactDOM.render(
     <Provider store={store}>
-      <Settings />
+      <AdminSettings />
     </Provider>,
     document.getElementById("customappname1-admin-settings")
   )

@@ -8,8 +8,8 @@
     "baseUrl": "./",
     "paths": {
       "@components-app/*": ["app/src/components/*"],
-      "@components-settings/*": ["app/settings/components/*"],
-      "@store-settings/*": ["app/settings/store/*"],
+      "@components-settings/*": ["app/adminSettings/components/*"],
+      "@store-settings/*": ["app/adminSettings/store/*"],
       "@store-app/*": ["app/src/store/*"],
       "@ts/*": ["app/common/ts/*"],
       "@utils/*": ["app/common/utils/*"],

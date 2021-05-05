@@ -1,13 +1,13 @@
 const webpack = require("webpack");
 const { merge } = require("webpack-merge");
 const dev = require("./webpack.common.js");
-
+const dotenv = require('dotenv').config({path: __dirname + '/.env'});
 module.exports = merge(dev, {
   devtool: "cheap-source-map",
   devServer: {
     disableHostCheck: true,
     open: true,
-    openPage: 'http://localhost:8083/apps/dashboard',
+    openPage: `http://localhost:8083/apps/${process.env.APP_NAME}`,
     compress: true,
     hot: true,
     writeToDisk: true,

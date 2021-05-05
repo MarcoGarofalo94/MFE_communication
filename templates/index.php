@@ -11,6 +11,6 @@
         <!-- search - contactsmenu - settingsmenu - ... -->
     </div>
 </header>
-<div id="content" class="app-customappname2">
+<div id="content" class="app-customappname1">
 
 </div>

@@ -8,7 +8,8 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
   entry: {
     index: [path.join(__dirname, "app/src", "index.tsx")],
-    settings: [path.join(__dirname, "app/settings", "index.tsx")],
+    adminSettings: [path.join(__dirname, "app/adminSettings", "index.tsx")],
+    personalSettings: [path.join(__dirname, "app/personalSettings", "index.tsx")],
     //settings: [path.join(__dirname, "lib/Settings/src", "AdminSettings.tsx")],
   },
   target: "web",

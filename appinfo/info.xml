@@ -1,19 +1,28 @@
 <?xml version="1.0"?>
-<info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
+<info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
     <id>customappname1</id>
     <name>Customappname1</name>
     <summary>This application allows you to reproduce videos from a nextcloud folder.</summary>
-    <description><![CDATA[This application allows you to reproduce videos inside a playlist from a nextcloud folder.]]></description>
-    <version>0.0.1</version>
+    <description>
+        <![CDATA[This application allows you to reproduce videos inside a playlist from a nextcloud folder.]]>
+    </description>
+    <version>0.0.2</version>
     <licence>agpl</licence>
-    <author mail="garofalomarco58@gmail.com" >Marco Garofalo</author>
+    <author mail="garofalomarco58@gmail.com">Marco Garofalo</author>
     <namespace>Customappname1</namespace>
     <category>multimedia</category>
     <bugs>https://issueTracker.com</bugs>
     <dependencies>
-        <nextcloud min-version="19" max-version="20"/>
+        <nextcloud min-version="19" max-version="20" />
     </dependencies>
+
+    <settings>
+        <personal>OCA\Customappname1\Settings\PersonalSettings</personal>
+        <personal-section>OCA\Customappname1\Settings\PersonalSection</personal-section>
+        <admin>OCA\Customappname1\Settings\AdminSettings</admin>
+        <admin-section>OCA\Customappname1\Settings\AdminSection</admin-section>
+    </settings>
+
     <navigations>
         <navigation>
             <name>Customappname1</name>
