@@ -14,7 +14,7 @@ In order to enable typescript there are some dependencies that need to be instal
 
 #### tsconfig.js
 
-`
+```typescript
 {
   "include": ["app/"],
   "compilerOptions": {
@@ -47,7 +47,7 @@ In order to enable typescript there are some dependencies that need to be instal
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }
-`
+```
 
 ### Webpack 
 ee
