@@ -57,7 +57,7 @@ In a simple project the TypeScript compiler (tsc) is enough to get started, but 
 
 # Development Usage 
 
-1. Go to the corrrct folder
+1. Go to the correct folder
 ```bash
 cd <your nextcloud instance>/data/custom_apps
 ```
