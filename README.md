@@ -7,14 +7,14 @@ This boilerplate is a starting point to develop a Nextcloud application using Ty
 ## How does it work?
 Developing an application is a time consume activity, in order to optimize this process, there are many features and approachs useful to speed up the whole  development process such as HMR and Live Reloading.
 
-###Typescript
+### Typescript
 [TypeScript](https://www.typescriptlang.org/) is a super-set of JavaScript, developed by Microsoft (Yes), that enhances the whole development process by adding features such as: static types definition, compilation time (TypeScript cannot be executed by default in the browser so it need to be transpiled to JavaScript), automatic documentation ([typedoc](https://typedoc.org/), [tsdoc](https://tsdoc.org/)), null safety and much more.
 
 In order to enable typescript there are some dependencies that need to be installed by the package manager of the project (in this project is used [Yarn](https://yarnpkg.com/) but it's possibile to use even [NPM](https://www.npmjs.com/) of course.) and a tsconfig.js file needs to be set up.
 
 #### tsconfig.js
 
-```typescript
+```javascript
 {
   "include": ["app/"], //entrypoint
   "compilerOptions": {
@@ -49,10 +49,13 @@ In order to enable typescript there are some dependencies that need to be instal
 }
 ```
 
-### Webpack 
-ee
+In a simple project the TypeScript compiler (tsc) is enough to get started, but in a project like this we need a code bundler like Webpack to resolve all the imports and bundle the code in a single script that will be loaded by Nextcloud. 
 
-## Reproducing the steps
+### Webpack 
+[Webpack](https://webpack.js.org/) is a massive project that allows you to bundle all your modules togheter and structure the output type depending on your needs. Webpack has a huge community and well defined documentation that explains every single step you need to follow in order to setup a project, the only downside is the learning curve, is not very easy to get started and reproduce a complex setup. In this project webpack is used to bundle all the code, but also to run the TypeScript compiler. Webpack has some other features like [webpack-dev-server](https://webpack.js.org/configuration/dev-server/) that allows you to serve your code locally during development and have HRM and live reloading.
+
+
+# Usage 
 
 ### Using yarn:
 
