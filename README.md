@@ -2,7 +2,7 @@
 Place this app in **/[your nextcloud instance folder]/data/custom_apps/
 # About this boilerplate
 
-This boilerplate is a starting point to develop a Nextcloud application using Typescript and React. There are many features involved in this project such as HRM (Hot Module Replacement) and Live Reloading. In order to benefit of these two feature an appropriate (docker) compose architecture has to be set, see __todo: nextcloud instance link repo.
+This boilerplate is a starting point to develop a Nextcloud application using Typescript and React. There are many features involved in this project such as HRM (Hot Module Replacement) and Live Reloading. In order to benefit of these two feature an appropriate (docker) compose architecture has to be set, see [This docker-compose repo](https://gitlab.com/FCRLAB/localnextcloud).
 
 ## How does it work?
 Developing an application is a time consume activity, in order to optimize this process, there are many features and approachs useful to speed up the whole  development process such as HMR and Live Reloading.
