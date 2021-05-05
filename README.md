@@ -2,10 +2,52 @@
 Place this app in **/[your nextcloud instance folder]/data/custom_apps/
 # About this boilerplate
 
-This boilerplate is a starting point to develop a Nextcloud application using Typescript and React. There are many features involved in this project such as HRM (Hot Module Replacement) and Live Reloading. In order to benefit of these two feature an appropriate (docker) compose architecture has to be se, see __todo: nextcloud instance link repo.
+This boilerplate is a starting point to develop a Nextcloud application using Typescript and React. There are many features involved in this project such as HRM (Hot Module Replacement) and Live Reloading. In order to benefit of these two feature an appropriate (docker) compose architecture has to be set, see __todo: nextcloud instance link repo.
 
 ## How does it work?
 Developing an application is a time consume activity, in order to optimize this process, there are many features and approachs useful to speed up the whole  development process such as HMR and Live Reloading.
+
+###Typescript
+[TypeScript](https://www.typescriptlang.org/) is a super-set of JavaScript, developed by Microsoft (Yes), that enhances the whole development process by adding features such as: static types definition, compilation time (TypeScript cannot be executed by default in the browser so it need to be transpiled to JavaScript), automatic documentation ([typedoc](https://typedoc.org/), [tsdoc](https://tsdoc.org/)), null safety and much more.
+
+In order to enable typescript there are some dependencies that need to be installed by the package manager of the project (in this project is used [Yarn](https://yarnpkg.com/) but it's possibile to use even [NPM](https://www.npmjs.com/) of course.) and a tsconfig.js file needs to be set up.
+
+#### tsconfig.js
+
+`
+{
+  "include": ["app/"],
+  "compilerOptions": {
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "baseUrl": "./",
+    "paths": {
+      "@components-app/*": ["app/src/components/*"],
+      "@components-settings/*": ["app/adminSettings/components/*"],
+      "@store-settings/*": ["app/adminSettings/store/*"],
+      "@store-app/*": ["app/src/store/*"],
+      "@ts/*": ["app/common/ts/*"],
+      "@utils/*": ["app/common/utils/*"],
+      "@config/*": ["app/common/config/*"],
+      "@models/*": ["app/common/models/*"],
+
+    },
+    "noImplicitAny": false,
+    "noImplicitThis": true,
+    "strictNullChecks": true,
+    "outDir": "./build/",
+    "preserveConstEnums": true,
+    "removeComments": true,
+    "sourceMap": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es5",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  }
+}
+`
 
 ### Webpack 
 ee
