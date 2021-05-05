@@ -57,15 +57,31 @@ In a simple project the TypeScript compiler (tsc) is enough to get started, but 
 
 # Development Usage 
 
-Go to the corrrct folder
+1. Go to the corrrct folder
 ```bash
-cd <your nextcloud instance>/data/ custom_apps
+cd <your nextcloud instance>/data/custom_apps
 ```
 
-Clone the repository with the desired name of the application (don't forget to go to your docker-compose.yml file and enable a new volume containing the application es: ./data/custom_apps/<desidered app name>:/var/www/html/custom_apps/<desidered app name> and restart the compose).
+2. Clone the repository with the desired name of the application (don't forget to go to your docker-compose.yml file and enable a new volume containing the application es: ./data/custom_apps/<desidered app name>:/var/www/html/custom_apps/<desidered app name> and restart the compose).
 ```bash
 git clone https://gitlab.com/FCRLAB/react-typescript-nextcloud-boilerplate.git <desidered name>
 ```
+3. Run the change_app_name.sh script, it will just change the default app name of this project  (customappname1) to the <desired one>. It is an important step in order to setup all the namespaces, if this fails I have bad news.
+```bash
+./change_app_name.sh <desidered name>
+```
+
+4. Install all the dependencies
+
+```bash
+yarn  install
+```
+or
+
+```bash
+npm install
+```
+
 
 
 Installing other dependencies:
