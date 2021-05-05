@@ -16,14 +16,14 @@ In order to enable typescript there are some dependencies that need to be instal
 
 ```typescript
 {
-  "include": ["app/"],
+  "include": ["app/"], //entrypoint
   "compilerOptions": {
     "module": "commonjs",
     "moduleResolution": "node",
-    "experimentalDecorators": true,
+    "experimentalDecorators": true,  //enabling decorators @
     "jsx": "react",
     "baseUrl": "./",
-    "paths": {
+    "paths": { //path aliasing
       "@components-app/*": ["app/src/components/*"],
       "@components-settings/*": ["app/adminSettings/components/*"],
       "@store-settings/*": ["app/adminSettings/store/*"],
@@ -34,17 +34,17 @@ In order to enable typescript there are some dependencies that need to be instal
       "@models/*": ["app/common/models/*"],
 
     },
-    "noImplicitAny": false,
+    "noImplicitAny": false, //disable complaing about any type
     "noImplicitThis": true,
-    "strictNullChecks": true,
+    "strictNullChecks": true, //enabling null safety
     "outDir": "./build/",
     "preserveConstEnums": true,
     "removeComments": true,
     "sourceMap": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
-    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+    "target": "es5", //version of js to which the code will be transpiled
+    "plugins": [{ "name": "typescript-plugin-css-modules" }] //nice plugin to allow css module in typescript
   }
 }
 ```
