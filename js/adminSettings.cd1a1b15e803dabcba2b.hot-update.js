@@ -1,4 +1,4 @@
-self["webpackHotUpdatecustomappname1"]("adminSettings",{},
+self["webpackHotUpdatecustomappname2"]("adminSettings",{},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ "use strict";
 /******/ 

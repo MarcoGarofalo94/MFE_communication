@@ -1,12 +1,12 @@
 <?php
 
-namespace OCA\Customappname1\Tests\Unit\Controller;
+namespace OCA\Customappname2\Tests\Unit\Controller;
 
 use PHPUnit_Framework_TestCase;
 
 use OCP\AppFramework\Http\TemplateResponse;
 
-use OCA\Customappname1\Controller\PageController;
+use OCA\Customappname2\Controller\PageController;
 
 
 class PageControllerTest extends PHPUnit_Framework_TestCase {
@@ -17,7 +17,7 @@ class PageControllerTest extends PHPUnit_Framework_TestCase {
 		$request = $this->getMockBuilder('OCP\IRequest')->getMock();
 
 		$this->controller = new PageController(
-			'customappname1', $request, $this->userId
+			'customappname2', $request, $this->userId
 		);
 	}
 

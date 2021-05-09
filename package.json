@@ -1,7 +1,7 @@
 {
-  "name": "customappname1",
+  "name": "customappname2",
   "version": "1.0.0",
-  "description": "Description for customappname1",
+  "description": "Description for customappname2",
   "main": "index.js",
   "repository": "https://gitlab.com/MarcoGarofalo94/react-typescript-nextcloud-boilerplate.git",
   "author": "MarcoGarofalo94 <garofalomarco1994@libero.it>",

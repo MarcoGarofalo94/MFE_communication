@@ -1,4 +1,4 @@
-self["webpackHotUpdatecustomappname1"]("index",{},
+self["webpackHotUpdatecustomappname2"]("index",{},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ "use strict";
 /******/ 

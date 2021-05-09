@@ -1,4 +1,4 @@
-self["webpackHotUpdatecustomappname1"]("personalSettings",{},
+self["webpackHotUpdatecustomappname2"]("personalSettings",{},
 /******/ function(__webpack_require__) { // webpackRuntimeModules
 /******/ "use strict";
 /******/ 

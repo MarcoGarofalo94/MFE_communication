@@ -38,7 +38,7 @@ const App: React.FC = () => {
           )}
           <div id="main-content">
             <NCSelect
-              dataURL={"http://localhost:8083/apps/opbridge/test"}
+              dataURL={"http://localhost:8083/apps/customappname2/test"}
               onSelectCallback={(key, item) => {
                 console.log("Selected Key:", key);
                 console.log("Selecte Option", item);

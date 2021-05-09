@@ -66,7 +66,7 @@ __webpack_require__(/*! ./index.css */ "./app/adminSettings/index.css");
 
 react_hot_ts_1.hot(module)(react_dom_1["default"].render(react_1["default"].createElement(react_redux_1.Provider, {
   store: store_1.store
-}, react_1["default"].createElement(AdminSettings_1["default"], null)), document.getElementById("customappname1-admin-settings")));
+}, react_1["default"].createElement(AdminSettings_1["default"], null)), document.getElementById("customappname2-admin-settings")));
 
 /***/ }),
 
@@ -52601,7 +52601,7 @@ webpackContext.id = "./node_modules/webpack/hot sync ^\\.\\/log$";
 /******/ 	/* webpack/runtime/load script */
 /******/ 	(() => {
 /******/ 		var inProgress = {};
-/******/ 		var dataWebpackPrefix = "customappname1:";
+/******/ 		var dataWebpackPrefix = "customappname2:";
 /******/ 		// loadScript function to load a script via script tag
 /******/ 		__webpack_require__.l = (url, done, key, chunkId) => {
 /******/ 			if(inProgress[url]) { inProgress[url].push(done); return; }
@@ -53160,7 +53160,7 @@ webpackContext.id = "./node_modules/webpack/hot sync ^\\.\\/log$";
 /******/ 			});
 /******/ 		}
 /******/ 		
-/******/ 		self["webpackHotUpdatecustomappname1"] = (chunkId, moreModules, runtime) => {
+/******/ 		self["webpackHotUpdatecustomappname2"] = (chunkId, moreModules, runtime) => {
 /******/ 			for(var moduleId in moreModules) {
 /******/ 				if(__webpack_require__.o(moreModules, moduleId)) {
 /******/ 					currentUpdate[moduleId] = moreModules[moduleId];

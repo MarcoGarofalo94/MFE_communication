@@ -1,5 +1,5 @@
 <?php
-namespace OCA\Customappname1\Controller;
+namespace OCA\Customappname2\Controller;
 
 use OCP\IRequest;
 use OCP\AppFramework\Http\TemplateResponse;
@@ -25,7 +25,7 @@ class PageController extends Controller {
 	 * @NoCSRFRequired
 	 */
 	public function index() {
-		return new TemplateResponse('customappname1', 'index');  // templates/index.php
+		return new TemplateResponse('customappname2', 'index');  // templates/index.php
 	}
 
 }

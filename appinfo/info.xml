@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <info xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://apps.nextcloud.com/schema/apps/info.xsd">
-    <id>customappname1</id>
-    <name>Customappname1</name>
+    <id>customappname2</id>
+    <name>Customappname2</name>
     <summary>This application allows you to reproduce videos from a nextcloud folder.</summary>
     <description>
         <![CDATA[This application allows you to reproduce videos inside a playlist from a nextcloud folder.]]>
@@ -9,7 +9,7 @@
     <version>0.0.2</version>
     <licence>agpl</licence>
     <author mail="garofalomarco58@gmail.com">Marco Garofalo</author>
-    <namespace>Customappname1</namespace>
+    <namespace>Customappname2</namespace>
     <category>multimedia</category>
     <bugs>https://issueTracker.com</bugs>
     <dependencies>
@@ -17,16 +17,16 @@
     </dependencies>
 
     <settings>
-        <personal>OCA\Customappname1\Settings\PersonalSettings</personal>
-        <personal-section>OCA\Customappname1\Settings\PersonalSection</personal-section>
-        <admin>OCA\Customappname1\Settings\AdminSettings</admin>
-        <admin-section>OCA\Customappname1\Settings\AdminSection</admin-section>
+        <personal>OCA\Customappname2\Settings\PersonalSettings</personal>
+        <personal-section>OCA\Customappname2\Settings\PersonalSection</personal-section>
+        <admin>OCA\Customappname2\Settings\AdminSettings</admin>
+        <admin-section>OCA\Customappname2\Settings\AdminSection</admin-section>
     </settings>
 
     <navigations>
         <navigation>
-            <name>Customappname1</name>
-            <route>customappname1.page.index</route>
+            <name>Customappname2</name>
+            <route>customappname2.page.index</route>
         </navigation>
     </navigations>
 </info>

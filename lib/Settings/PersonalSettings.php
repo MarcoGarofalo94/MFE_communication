@@ -1,5 +1,5 @@
 <?php
-namespace OCA\Customappname1\Settings;
+namespace OCA\Customappname2\Settings;
 
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\BackgroundJob\IJobList;
@@ -8,7 +8,7 @@ use OCP\IDateTimeFormatter;
 use OCP\IL10N;
 use OCP\Settings\ISettings;
 
-use OCA\Customappname1\Settings\SettingsManager;
+use OCA\Customappname2\Settings\SettingsManager;
 
 class PersonalSettings implements ISettings {
 
@@ -62,14 +62,14 @@ class PersonalSettings implements ISettings {
             'signEmail' => $signEmail
         ];*/
 
-        return new TemplateResponse('customappname1', 'personal_settings');
+        return new TemplateResponse('customappname2', 'personal_settings');
     }
 
     /**
      * @return string the section ID, e.g. 'sharing'
      */
     public function getSection() {
-        return 'customappname1';
+        return 'customappname2';
     }
 
     /**

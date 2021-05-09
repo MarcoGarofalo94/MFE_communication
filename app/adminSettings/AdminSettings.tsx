@@ -15,6 +15,6 @@ hot(module)(
     <Provider store={store}>
       <AdminSettings />
     </Provider>,
-    document.getElementById("opbridge-admin-settings")
+    document.getElementById("customappname2-admin-settings")
   )
 );
