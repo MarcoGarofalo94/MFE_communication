@@ -8,19 +8,19 @@ const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
   entry: {
     index: [path.join(__dirname, "app/src", "index.tsx")],
-    adminSettings: [path.join(__dirname, "app/adminSettings", "index.tsx")],
-    personalSettings: [path.join(__dirname, "app/personalSettings", "index.tsx")],
+    adminSettings: [path.join(__dirname, "app/adminSettings", "AdminSettings.tsx")],
+    personalSettings: [
+      path.join(__dirname, "app/personalSettings", "PersonalSettings.tsx"),
+    ],
     //settings: [path.join(__dirname, "lib/Settings/src", "AdminSettings.tsx")],
   },
   target: "web",
   watch: true,
   mode: "development",
   optimization: {
-  usedExports: true,
-  minimizer: [
-   new TerserPlugin(),
-  ]
- },
+    usedExports: true,
+    minimizer: [new TerserPlugin()],
+  },
   output: {
     path: path.resolve(__dirname, "./js"),
     publicPath: "/js/",
@@ -108,12 +108,12 @@ module.exports = {
     ],
   },
   plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new MiniCssExtractPlugin({
       filename: "../css/[name].css",
       chunkFilename: "../css/[id].css",
     }),
 
-    new webpack.HotModuleReplacementPlugin(),
     new CleanWebpackPlugin(),
   ],
 };

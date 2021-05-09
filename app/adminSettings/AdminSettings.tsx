@@ -1,7 +1,20 @@
-import React from 'react';
+import { hot } from "react-hot-ts";
+import React from "react";
+import ReactDOM from "react-dom";
+import { Provider } from "react-redux";
 
-const AdminSettings:React.FC = ( ) => {
-  return <div>Admin Settings</div>
-}
+import { store } from '@store-admin/store';
+import "./AdminSettings.css";
 
-export default AdminSettings;
+const AdminSettings: React.FC = () => {
+  return <div>Admin Settings</div>;
+};
+
+hot(module)(
+  ReactDOM.render(
+    <Provider store={store}>
+      <AdminSettings />
+    </Provider>,
+    document.getElementById("opbridge-admin-settings")
+  )
+);
