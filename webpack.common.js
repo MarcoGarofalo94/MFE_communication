@@ -14,9 +14,10 @@ module.exports = {
     ],
     //settings: [path.join(__dirname, "lib/Settings/src", "AdminSettings.tsx")],
   },
+  experiments: {
+    topLevelAwait: true,
+  },
   target: "web",
-  watch: true,
-  mode: "development",
   optimization: {
     usedExports: true,
     minimizer: [new TerserPlugin()],
@@ -66,7 +67,7 @@ module.exports = {
         exclude: "/node_modules/",
       },
       {
-        test: /\.(vtt|woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+        test: /\.(vtt|woff(2)?|ttf|eot)(\?v=\d+\.\d+\.\d+)?$/,
         use: [
           {
             loader: "file-loader",

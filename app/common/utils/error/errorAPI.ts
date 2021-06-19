@@ -1,7 +1,7 @@
-import { NCResponseError, OptionsResponse } from "@store-app/types/options";
+
 
 export const checkNCResponseError = (
-  data: NCResponseError & OptionsResponse
+  data: NCResponse & NCResponseError
 ) => {
   if (!data.success || !data.result) {
     throw {

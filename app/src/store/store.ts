@@ -1,10 +1,9 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
-import optionsReducer from '@store-app/reducers/options';
 //import reducer from '@store-settings/reducers/reducer
 
 export const store = configureStore({
     reducer: {
-      optionsData: optionsReducer
+     
     }
 });
 

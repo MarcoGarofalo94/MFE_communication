@@ -7,7 +7,7 @@ else
     find . \( -type d -name .git -prune -name node_modules -prune \) -o -type f -exec  sed -i "s/customappname2/$1/g" {} +;
     echo "changing id customappname2 to $1 in all nginx.conf..."
     find ../../../nginx/ \( -type d -name .git -prune -name node_modules -prune \) -o -type f -exec  sed -i "s/customappname2/$1/g" {} +;
-    echo "changing namespace Customappname2 to ${1^} in all files..."
+    echo "changing namespace customappname2 to ${1^} in all files..."
     find . \( -type d -name .git -prune -name node_modules -prune \) -o -type f -exec  sed -i "s/Customappname2/${1^}/g" {} +;
     echo "Done."
 fi

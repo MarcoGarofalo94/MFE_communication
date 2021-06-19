@@ -1,9 +1,12 @@
 {
   "include": ["app/"],
   "compilerOptions": {
-    "module": "commonjs",
+    "types": ["jest"],
+    "module": "esnext",
     "moduleResolution": "node",
+    
     "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
@@ -18,19 +21,22 @@
       "@config/*": ["app/common/config/*"],
       "@models/*": ["app/common/models/*"],
       "@common-components/*": ["app/common/components/*"],
-
-
+      "@nextcloud/js": ["app/common/utils/nextcloud"]
     },
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitThis": true,
     "strictNullChecks": true,
     "outDir": "./build/",
     "preserveConstEnums": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "removeComments": true,
     "sourceMap": true,
+    "allowJs": true,
+
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-    "target": "es5",
+    "target": "es2017",
     "plugins": [{ "name": "typescript-plugin-css-modules" }]
   }
 }

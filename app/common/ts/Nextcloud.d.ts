@@ -1,122 +1,194 @@
 interface EscapeOptions {
-    escape?: boolean;
+  escape?: boolean;
 }
 
-interface Accessibility {
-    theme: string;
-    highcontrast: boolean;
+interface NCResponseError {
+  class: string;
+  success: boolean;
+  message: string;
+}
+
+interface NCResponse {
+  result: any;
+  success: boolean;
 }
 
 declare namespace OCA {
-    function Accessibility(): Accessibility;
+  namespace Accessibility {
+    const theme: string;
+    const highcontrast: string;
+  }
 }
 
+declare namespace OCP {
+
+  interface appConfigOptions {
+    success?: ((data: any) => void),
+    error?: ((data: any) => void),
+  }
+
+  namespace AppConfig {
+    function getApps(options: appConfigOptions): void;
+    function getValue(app: string, key: string, defaultValue: any, options?: appConfigOptions): void;
+    function setValue(app: string, key: string, value: any, options?: appConfigOptions): void;
+  }
+
+}
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 declare namespace OC {
-    namespace Util {
-        function humanFileSize(size: number): string;
+  namespace Util {
+    function humanFileSize(size: number): string;
 
-        function computerFileSize(size: string): number;
+    function computerFileSize(size: string): number;
+  }
+
+  namespace dialogs {
+    function alert(
+      text: string,
+      title: string,
+      callback: () => void,
+      modal?: boolean
+    ): void;
+
+    function info(
+      text: string,
+      title: string,
+      callback: () => void,
+      modal?: boolean
+    ): void;
+
+    function confirm(
+      text: string,
+      title: string,
+      callback: (result: boolean) => void,
+      modal?: boolean
+    ): void;
+
+    function confirmHtml(
+      text: string,
+      title: string,
+      callback: (result: boolean) => void,
+      modal?: boolean
+    ): void;
+
+    function prompt(
+      text: string,
+      title: string,
+      callback: (ok: boolean, result: string) => void,
+      modal?: boolean,
+      name?: string,
+      password?: boolean
+    ): void;
+
+    function filepicker(
+      title: string,
+      callback: (result: string | string[]) => void,
+      multiselect?: boolean,
+      mimetypeFilter?: string,
+      modal?: boolean
+    ): void;
+  }
+
+  namespace Share {
+    const SHARE_TYPE_USER = 0;
+    const SHARE_TYPE_GROUP = 1;
+    const SHARE_TYPE_LINK = 3;
+    const SHARE_TYPE_CIRCLE = 7;
+  }
+
+  interface Plugin<T> {
+    name?: string;
+    attach: (instance: T, options: any) => void;
+    detach?: (instance: T, options: any) => void;
+  }
+
+  namespace Plugins {
+    function register(scope: string, plugin: OC.Plugin<any>): void;
+    function attach(targetName: string, targetObject: any, options: any): void;
+    function detach(targetName: string, targetObject: any, options: any): void;
+    function getPlugins(): OC.Plugin<any>[];
+  }
+
+  namespace Search {
+    interface Core {
+      setFilter: (app: string, callback: (query: string) => void) => void;
     }
+  }
 
-    namespace dialogs {
-        function alert(text: string, title: string, callback: () => void, modal?: boolean): void;
+  namespace PasswordConfirmation {
+    function requiresPasswordConfirmation(): boolean;
 
-        function info(text: string, title: string, callback: () => void, modal?: boolean): void;
+    function requirePasswordConfirmation(cb: () => void): void;
+  }
 
-        function confirm(text: string, title: string, callback: (result: boolean) => void, modal?: boolean): void;
+  function generateUrl(
+    url: string,
+    parameters?: { [key: string]: string | number },
+    options?: EscapeOptions
+  ): string;
 
-        function confirmHtml(text: string, title: string, callback: (result: boolean) => void, modal?: boolean): void;
+  function linkToOCS(service: string, version: number): string;
 
-        function prompt(text: string, title: string, callback: (ok: boolean, result: string) => void, modal?: boolean, name?: string, password?: boolean): void;
+  function linkToRemote(path: string): string;
 
-        function filepicker(title: string, callback: (result: string | string[]) => void, multiselect?: boolean, mimetypeFilter?: string, modal?: boolean): void;
-    }
+  function imagePath(app: string, file: string): string;
 
-    namespace Share {
-        const SHARE_TYPE_USER = 0;
-        const SHARE_TYPE_GROUP = 1;
-        const SHARE_TYPE_LINK = 3;
-        const SHARE_TYPE_CIRCLE = 7;
-    }
+  function filePath(app: string, type: string, file: string): string;
 
-    interface Plugin<T> {
-        name?: string;
-        attach: (instance: T, options: any) => void;
-        detach?: (instance: T, options: any) => void;
-    }
+  const PERMISSION_CREATE = 4;
+  const PERMISSION_READ = 1;
+  const PERMISSION_UPDATE = 2;
+  const PERMISSION_DELETE = 8;
+  const PERMISSION_SHARE = 16;
+  const PERMISSION_ALL = 31;
 
-    namespace Plugins {
-        function register(scope: string, plugin: OC.Plugin<any>): void;
-        function attach(targetName: string, targetObject: any, options: any): void;
-        function detach(targetName: string, targetObject: any, options: any): void;
-        function getPlugins(): OC.Plugin<any>[];
-    }
+  const currentUser: string;
 
-    namespace Search {
-        interface Core {
-            setFilter: (app: string, callback: (query: string) => void) => void;
-        }
-    }
+  function getCurrentUser(): { uid: string; displayName: string };
 
-    namespace PasswordConfirmation {
-        function requiresPasswordConfirmation(): boolean;
+  const requestToken: string;
 
-        function requirePasswordConfirmation(cb: () => void): void;
-    }
-
-    function generateUrl(url: string, parameters?: { [key: string]: string | number }, options?: EscapeOptions): string
-
-    function linkToOCS(service: string, version: number): string;
-
-    function linkToRemote(path: string): string;
-
-    function imagePath(app: string, file: string): string;
-
-    function filePath(app: string, type: string, file: string): string;
-
-    const PERMISSION_CREATE = 4;
-    const PERMISSION_READ = 1;
-    const PERMISSION_UPDATE = 2;
-    const PERMISSION_DELETE = 8;
-    const PERMISSION_SHARE = 16;
-    const PERMISSION_ALL = 31;
-
-    const currentUser: string;
-
-    function getCurrentUser(): { uid: string; displayName: string }
-
-    const requestToken: string;
-
-    const config: {
-        blacklist_files_regex: string;
-        enable_avatars: boolean;
-        last_password_link: string | null;
-        modRewriteWorking: boolean;
-        session_keepalive: boolean;
-        session_lifetime: boolean;
-        'sharing.maxAutocompleteResults': number;
-        'sharing.minSearchStringLength': number;
-        version: string;
-        versionString: string;
-    };
+  const config: {
+    blacklist_files_regex: string;
+    enable_avatars: boolean;
+    last_password_link: string | null;
+    modRewriteWorking: boolean;
+    session_keepalive: boolean;
+    session_lifetime: boolean;
+    "sharing.maxAutocompleteResults": number;
+    "sharing.minSearchStringLength": number;
+    version: string;
+    versionString: string;
+  };
 }
 
-declare function t(app: string, string: string, vars?: { [key: string]: string }, count?: number, options?: EscapeOptions): string;
+declare function t(
+  app: string,
+  string: string,
+  vars?: { [key: string]: string },
+  count?: number,
+  options?: EscapeOptions
+): string;
 
-declare function n(app: string, singular: string, plural: string, number: number, vars?: { [key: string]: string }): string;
+declare function n(
+  app: string,
+  singular: string,
+  plural: string,
+  number: number,
+  vars?: { [key: string]: string }
+): string;
 
-declare module 'NC' {
-    export interface OCSResult<T> {
-        ocs: {
-            data: T;
-            meta: {
-                status: 'ok' | 'failure';
-                message: string;
-                statuscode: number;
-                totalitems: number;
-                itemsperpage: number;
-            };
-        };
-    }
+declare module "NC" {
+  export interface OCSResult<T> {
+    ocs: {
+      data: T;
+      meta: {
+        status: "ok" | "failure";
+        message: string;
+        statuscode: number;
+        totalitems: number;
+        itemsperpage: number;
+      };
+    };
+  }
 }

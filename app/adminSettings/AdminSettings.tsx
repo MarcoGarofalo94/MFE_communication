@@ -15,6 +15,6 @@ hot(module)(
     <Provider store={store}>
       <AdminSettings />
     </Provider>,
-    document.getElementById("customappname2-admin-settings")
+    document.getElementById("lcntable-admin-settings")
   )
 );

@@ -16,6 +16,6 @@ hot(module)(
     <Provider store={store}>
       <PersonalSettings />
     </Provider>,
-    document.getElementById("customappname2-personal-settings")
+    document.getElementById("lcntable-personal-settings")
   )
 );
