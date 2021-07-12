@@ -12,6 +12,7 @@ module.exports = {
     personalSettings: [
       path.join(__dirname, "app/personalSettings", "PersonalSettings.tsx"),
     ],
+    dashboard: [path.join(__dirname, "app/dashboard", "Dashboard.tsx")],
     //settings: [path.join(__dirname, "lib/Settings/src", "AdminSettings.tsx")],
   },
   experiments: {

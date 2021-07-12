@@ -1,7 +1,7 @@
 {
   "include": ["app/"],
   "compilerOptions": {
-    "types": ["jest"],
+    // "types": ["jest"],
     "module": "esnext",
     "moduleResolution": "node",
     

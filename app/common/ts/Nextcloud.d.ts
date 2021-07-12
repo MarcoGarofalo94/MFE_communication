@@ -18,7 +18,13 @@ declare namespace OCA {
     const theme: string;
     const highcontrast: string;
   }
+
+  namespace Dashboard {
+    function register(id: string, renderCallback: (el: Element) => void);
+  }
 }
+
+
 
 declare namespace OCP {
 
