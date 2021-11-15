@@ -12,13 +12,13 @@ interface DataResponse {
 const Dashboard: React.FC = () => {
 
   return (
-    <div>Customappname2 content</div>
+    <div>CorecomDashboard content</div>
   );
 };
 
 document.addEventListener("DOMContentLoaded", () => {
   hot(module)(
-    OCA.Dashboard.register("customappname2", (el) => {
+    OCA.Dashboard.register("corecomdashboard", (el) => {
       ReactDOM.render(<Dashboard />, el);
     })
   );

@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\Customappname2\Tests\Integration\Controller;
+namespace OCA\CorecomDashboard\Tests\Integration\Controller;
 
 use OCP\AppFramework\App;
 use Test\TestCase;
@@ -17,13 +17,13 @@ class AppTest extends TestCase {
 
     public function setUp() {
         parent::setUp();
-        $app = new App('customappname2');
+        $app = new App('CorecomDashboard');
         $this->container = $app->getContainer();
     }
 
     public function testAppInstalled() {
         $appManager = $this->container->query('OCP\App\IAppManager');
-        $this->assertTrue($appManager->isInstalled('customappname2'));
+        $this->assertTrue($appManager->isInstalled('CorecomDashboard'));
     }
 
 }

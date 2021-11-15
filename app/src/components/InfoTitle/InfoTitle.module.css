@@ -1,0 +1,5 @@
+.IconButton {
+    border-radius: 100%;
+    min-height: 0;
+    margin-top: 2px !important;
+}

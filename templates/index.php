@@ -1,6 +1,6 @@
 <?php
-    script('customappname2', 'index');
-    style('customappname2', 'index');
+    script('corecomdashboard', 'index');
+    style('corecomdashboard', 'index');
 ?>
 
 <header>
@@ -11,6 +11,6 @@
         <!-- search - contactsmenu - settingsmenu - ... -->
     </div>
 </header>
-<div id="content" class="app-customappname2">
+<div id="content" class="app-corecomdashboard">
 
 </div>

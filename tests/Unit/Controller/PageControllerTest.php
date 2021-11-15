@@ -1,12 +1,12 @@
 <?php
 
-namespace OCA\Customappname2\Tests\Unit\Controller;
+namespace OCA\CorecomDashboard\Tests\Unit\Controller;
 
 use PHPUnit_Framework_TestCase;
 
 use OCP\AppFramework\Http\TemplateResponse;
 
-use OCA\Customappname2\Controller\PageController;
+use OCA\CorecomDashboard\Controller\PageController;
 
 
 class PageControllerTest extends PHPUnit_Framework_TestCase {
@@ -17,7 +17,7 @@ class PageControllerTest extends PHPUnit_Framework_TestCase {
 		$request = $this->getMockBuilder('OCP\IRequest')->getMock();
 
 		$this->controller = new PageController(
-			'customappname2', $request, $this->userId
+			'corecomdashboard', $request, $this->userId
 		);
 	}
 

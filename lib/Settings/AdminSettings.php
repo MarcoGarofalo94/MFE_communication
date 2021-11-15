@@ -1,6 +1,6 @@
 <?php
 
-namespace OCA\Customappname2\Settings;
+namespace OCA\CorecomDashboard\Settings;
 
 use OCP\AppFramework\Http\TemplateResponse;
 use OCP\BackgroundJob\IJobList;
@@ -63,7 +63,7 @@ class AdminSettings implements ISettings
         ];*/
 
     try {
-      $response = new TemplateResponse("customappname2", "admin_settings");
+      $response = new TemplateResponse("corecomdashboard", "admin_settings");
 
       $policy = new ContentSecurityPolicy();
       //$policy->addAllowedChildSrcDomain('*');
@@ -90,7 +90,7 @@ class AdminSettings implements ISettings
 
   public function getSection()
   {
-    return "customappname2";
+    return "corecomdashboard";
   }
 
   /**

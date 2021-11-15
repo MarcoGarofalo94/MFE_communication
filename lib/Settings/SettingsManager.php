@@ -1,7 +1,7 @@
 <?php
 
 
-namespace OCA\Customappname2\Settings;
+namespace OCA\CorecomDashboard\Settings;
 
 use OC\AppConfig;
 use OCA\VideoViewer\Utils\JsonHandler;
