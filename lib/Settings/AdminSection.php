@@ -1,5 +1,5 @@
 <?php
-namespace OCA\CorecomDashboard\Settings;
+namespace OCA\Customappname2\Settings;
 
 use OCP\IL10N;
 use OCP\IURLGenerator;
@@ -24,7 +24,7 @@ class AdminSection implements IIconSection {
      * @returns string
      */
     public function getID() {
-        return 'corecomdashboard'; //or a generic id if feasible
+        return 'customappname2'; //or a generic id if feasible
     }
 
     /**
@@ -34,7 +34,7 @@ class AdminSection implements IIconSection {
      * @return string
      */
     public function getName() {
-        return $this->l->t('corecomdashboard');
+        return $this->l->t('Customappname2');
     }
 
     /**
@@ -50,7 +50,7 @@ class AdminSection implements IIconSection {
      * @return The relative path to a an icon describing the section
      */
     public function getIcon() {
-        return $this->urlGenerator->imagePath('corecomdashboard', 'app.svg');
+        return $this->urlGenerator->imagePath('customappname2', 'app.svg');
     }
 
 }

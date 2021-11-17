@@ -66,7 +66,7 @@ cd <your nextcloud instance>/data/custom_apps
 ```bash
 git clone https://gitlab.com/FCRLAB/react-typescript-nextcloud-boilerplate.git <desidered name>
 ```
-3. Run the change_app_name.sh script, it will just change the default app name of this project (CorecomDashboard) to the desired one. It is an important step in order to setup all the namespaces, if this fails I have bad news.
+3. Run the change_app_name.sh script, it will just change the default app name of this project (customappname2) to the desired one. It is an important step in order to setup all the namespaces, if this fails I have bad news.
 ```bash
 ./change_app_name.sh <desired name>
 ```

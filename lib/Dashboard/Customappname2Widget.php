@@ -1,16 +1,16 @@
 <?php
 
-namespace OCA\CorecomDashboard\Dashboard;
+namespace OCA\Customappname2\Dashboard;
 
 use OCA\Accessibility\AppInfo\Application as AppInfoApplication;
-use OCA\CorecomDashboard\AppInfo\Application;
+use OCA\Customappname2\AppInfo\Application;
 use OCP\Dashboard\IWidget;
 use OCP\IInitialStateService;
 use OCP\IL10N;
 use OCP\IURLGenerator;
 use OCP\IUserSession;
 
-class CorecomDashboardWidget implements IWidget {
+class DocsWidget implements IWidget {
 
     public function __construct(
         IInitialStateService $initialStateService,
@@ -35,7 +35,7 @@ class CorecomDashboardWidget implements IWidget {
      * @since 20.0.0
      */
     public function getTitle(): string {
-        return $this->l10n->t('corecomdashboard');
+        return $this->l10n->t('Customappname2');
     }
 
     /**

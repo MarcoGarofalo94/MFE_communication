@@ -1,7 +1,7 @@
 <?php
 
 
-namespace OCA\CorecomDashboard\AppInfo;
+namespace OCA\Customappname2\AppInfo;
 
 use OCA\UnimeDocs\Dashboard\DocsWidget;
 use OCP\AppFramework\App;
@@ -11,7 +11,7 @@ use OCP\AppFramework\Bootstrap\IRegistrationContext;
 
 class Application extends App implements IBootstrap {
 
-    public const APP_ID = 'corecomdashboard';
+    public const APP_ID = 'customappname2';
 
     public function __construct(array $urlParams = []) {
         parent::__construct(self::APP_ID, $urlParams);
@@ -19,7 +19,7 @@ class Application extends App implements IBootstrap {
 
     public function register(IRegistrationContext $context): void
     {
-         $context->registerDashboardWidget(CorecomDashboardWidget::class);
+         $context->registerDashboardWidget(Customappname2Widget::class);
     }
 
     public function boot(IBootContext $context): void
