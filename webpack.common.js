@@ -1,5 +1,6 @@
 const path = require("path");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
 const rhTransformer = require("react-hot-ts/lib/transformer");
 const webpack = require("webpack");
@@ -7,13 +8,19 @@ const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
 module.exports = {
   entry: {
-    index: [path.join(__dirname, "app/src", "index.tsx")],
-    adminSettings: [path.join(__dirname, "app/adminSettings", "AdminSettings.tsx")],
-    personalSettings: [
-      path.join(__dirname, "app/personalSettings", "PersonalSettings.tsx"),
-    ],
-    dashboard: [path.join(__dirname, "app/dashboard", "Dashboard.tsx")],
-    //settings: [path.join(__dirname, "lib/Settings/src", "AdminSettings.tsx")],
+    mf1: {
+      import: [path.join(__dirname, "mf/mf1/src", "index.tsx")],
+      dependOn: "handler",
+    },
+    mf2: {
+      import: [path.join(__dirname, "mf/mf2/src", "index.tsx")],
+      dependOn: "handler",
+    },
+    mf3: {
+      import: [path.join(__dirname, "mf/mf3/src", "index.tsx")],
+      dependOn: "handler",
+    },
+    handler: [path.join(__dirname, "ClientHandler.ts")],
   },
   experiments: {
     topLevelAwait: true,
@@ -24,8 +31,8 @@ module.exports = {
     minimizer: [new TerserPlugin()],
   },
   output: {
-    path: path.resolve(__dirname, "./js"),
-    publicPath: "/js/",
+    path: path.resolve(__dirname, "./build/js"),
+    publicPath: "/",
     filename: "[name].js",
     chunkFilename: "chunks/[name]-[hash].js",
     clean: true,
@@ -110,12 +117,16 @@ module.exports = {
     ],
   },
   plugins: [
-    new webpack.HotModuleReplacementPlugin(),
+    //new CleanWebpackPlugin({ verbose: true }),
     new MiniCssExtractPlugin({
       filename: "../css/[name].css",
       chunkFilename: "../css/[id].css",
     }),
-
-    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      filename: "/build/index.html",
+      template: "templates/index.html",
+      inject: true,
+    }),
+    new webpack.HotModuleReplacementPlugin(),
   ],
 };

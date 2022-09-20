@@ -1,14 +1,18 @@
 const webpack = require("webpack");
+const path = require('path')
 const { merge } = require("webpack-merge");
 const dev = require("./webpack.common.js");
 const dotenv = require('dotenv').config({path: __dirname + '/.env'});
 module.exports = merge(dev, {
   devtool: "cheap-source-map",
   mode: "development",
+  
   devServer: {
     disableHostCheck: true,
+    https: true,
+    contentBase: path.join(__dirname, "build"),
     open: true,
-    openPage: `http://localhost:${process.env.PROXY_PORT}/apps/${process.env.APP_NAME}`,
+    openPage: `https://localhost:${3000}/`,
     compress: true,
     hot: true,
     writeToDisk: true,

@@ -1,27 +1,21 @@
 {
-  "include": ["app/"],
+  "include": ["app/", "common", "."],
   "compilerOptions": {
     // "types": ["jest"],
     "module": "esnext",
     "moduleResolution": "node",
-    
+    "noImplicitUseStrict": true,
     "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
-      "@components-app/*": ["app/src/components/*"],
-      "@components-admin/*": ["app/adminSettings/components/*"],
-      "@components-personal/*": ["app/adminSettings/components/*"],
-      "@store-admin/*": ["app/adminSettings/store/*"],
-      "@store-personal/*": ["app/personalSettings/store/*"],
-      "@store-app/*": ["app/src/store/*"],
-      "@ts/*": ["app/common/ts/*"],
-      "@utils/*": ["app/common/utils/*"],
-      "@config/*": ["app/common/config/*"],
-      "@models/*": ["app/common/models/*"],
-      "@common-components/*": ["app/common/components/*"],
-      "@nextcloud/js": ["app/common/utils/nextcloud"]
+      "@ts/*": ["common/ts/*"],
+      "@utils/*": ["common/utils/*"],
+      "@config/*": ["common/config/*"],
+      "@models/*": ["common/models/*"],
+      "@common-components/*": ["common/components/*"],
+      "@nextcloud/js": ["common/utils/nextcloud"]
     },
     "noImplicitAny": false,
     "noImplicitThis": true,
