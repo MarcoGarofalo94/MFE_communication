@@ -1,15 +1,19 @@
 // pubsub.js
+let document;
 
 import axios from "axios";
 import associations from "./associations.json";
+import Engine from "./Engine";
 interface MyDocument extends Document {
   _oldGetElementById: Function;
 }
+
 export class Channel {
   private static _instance: Channel = new Channel();
   private subscriptions: Subscription[] = [];
   private clientTimes: number[] = [];
   private serverTimes: number[] = [];
+  times: number[] = [];
 
   constructor() {
     this.interceptSelector();
@@ -25,6 +29,8 @@ export class Channel {
   }
 
   private notify(sub: Subscription, message: string) {
+    console.log("notifying " + sub.id, message);
+    console.log(sub.callback);
     sub.callback(message);
   }
 
@@ -34,6 +40,7 @@ export class Channel {
     eventId: string,
     online = true
   ) {
+    Engine.checkFlow(eventId);
     if (online) {
       let initialTime = Date.now();
       let endTime = 0;
@@ -131,7 +138,9 @@ export class Channel {
     }
   }
   async publish(publication: Publication, digest: string) {
+    let initTime = Date.now();
     console.log("subscriptions da publish", this.subscriptions);
+    console.log("check prima");
     if (
       !(await this.checkPublisherHash(
         digest,
@@ -141,14 +150,16 @@ export class Channel {
     ) {
       return;
     }
-
+    console.log("check passato");
     let subs = this.subscriptions.filter(
       (subscription) => subscription.eventId == publication.eventId
     );
     subs.forEach((sub) => {
       this.notify(sub, publication.message);
     });
-    console.log(this.clientTimes,this.serverTimes)
+    console.log(this.clientTimes, this.serverTimes);
+    let endTime = Date.now();
+    this.times.push(endTime - initTime);
   }
 
   async subscribe(subscription: Subscription, digest: string) {
@@ -177,21 +188,23 @@ export class Channel {
   }
 
   getTimes = () => {
-    console.log('clientTimes',this.clientTimes)
-  }
+    console.log("clientTimes", this.times);
+  };
 
   private interceptSelector() {
-    (document as MyDocument)._oldGetElementById = document.getElementById;
+    if (document) {
+      (document as MyDocument)._oldGetElementById = document.getElementById;
 
-    document.getElementById = function (id: string, caller: string) {
-      console.log(id.includes(caller));
-      console.log(id);
-      if (id.toLowerCase().includes(caller.toLowerCase())) {
-        console.log((document as MyDocument)._oldGetElementById(id));
-        return (document as MyDocument)._oldGetElementById(id);
-      }
-      return null;
-    } as any;
+      document.getElementById = function (id: string, caller: string) {
+        console.log(id.includes(caller));
+        console.log(id);
+        if (id.toLowerCase().includes(caller.toLowerCase())) {
+          console.log((document as MyDocument)._oldGetElementById(id));
+          return (document as MyDocument)._oldGetElementById(id);
+        }
+        return null;
+      } as any;
+    }
   }
 }
 
@@ -208,4 +221,5 @@ interface Publication {
 }
 
 const Handler = Channel.getInstance();
+(window as any).Channel = Handler;
 export default Handler;

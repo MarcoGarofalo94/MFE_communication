@@ -1,0 +1,6 @@
+{
+  "id": "mf1",
+  "listening": ["e3"],
+  "emitting": ["e1"],
+  "topics": ["device1"]
+}

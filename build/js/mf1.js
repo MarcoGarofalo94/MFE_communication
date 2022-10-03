@@ -1,28 +1,31 @@
 (self["webpackChunkcustomappname2"] = self["webpackChunkcustomappname2"] || []).push([["mf1"],{
 
-/***/ "./mf/mf1/src/App.tsx":
-/*!****************************!*\
-  !*** ./mf/mf1/src/App.tsx ***!
-  \****************************/
+/***/ "./tmp/mf/mf1/src/App.tsx":
+/*!********************************!*\
+  !*** ./tmp/mf/mf1/src/App.tsx ***!
+  \********************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/toConsumableArray */ "./node_modules/@babel/runtime/helpers/esm/toConsumableArray.js");
 /* harmony import */ var _babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/helpers/slicedToArray */ "./node_modules/@babel/runtime/helpers/esm/slicedToArray.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _ClientHandler__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../ClientHandler */ "./ClientHandler.ts");
-/* harmony import */ var _hash_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../hash.json */ "./mf/mf1/hash.json");
-/* harmony import */ var _mf_conf_json__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../mf.conf.json */ "./mf/mf1/mf.conf.json");
+/* harmony import */ var _hash_json__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../hash.json */ "./tmp/mf/mf1/hash.json");
+/* harmony import */ var _mf_conf_json__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../mf.conf.json */ "./tmp/mf/mf1/mf.conf.json");
+/* harmony import */ var pubsub_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! pubsub-js */ "./node_modules/pubsub-js/src/pubsub.js");
+/* harmony import */ var pubsub_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(pubsub_js__WEBPACK_IMPORTED_MODULE_5__);
 
 
 
 
 
 
-_ClientHandler__WEBPACK_IMPORTED_MODULE_3__["default"].getSubscriptions();
+var Handler = window["Channel"];
+var ExternalInstance = window["ExternalInstance"];
 var isInit = true;
 
 var App = function App() {
@@ -31,27 +34,44 @@ var App = function App() {
       isOpen = _React$useState2[0],
       setIsOpen = _React$useState2[1];
 
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)({
+    message: "",
+    name: ""
+  }),
       _useState2 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState, 2),
-      message = _useState2[0],
-      setMessage = _useState2[1];
+      errorMessages = _useState2[0],
+      setErrorMessages = _useState2[1];
 
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(false),
       _useState4 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState3, 2),
-      topics = _useState4[0],
-      setTopics = _useState4[1];
+      isSubmitted = _useState4[0],
+      setIsSubmitted = _useState4[1];
 
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(),
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(""),
       _useState6 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState5, 2),
-      lastTopic = _useState6[0],
-      setLastTopic = _useState6[1];
+      message = _useState6[0],
+      setMessage = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)([]),
+      _useState8 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState7, 2),
+      topics = _useState8[0],
+      setTopics = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(),
+      _useState10 = (0,_babel_runtime_helpers_slicedToArray__WEBPACK_IMPORTED_MODULE_1__["default"])(_useState9, 2),
+      lastTopic = _useState10[0],
+      setLastTopic = _useState10[1];
 
   (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    var token = pubsub_js__WEBPACK_IMPORTED_MODULE_5___default().subscribe("MY TOPIC", function (msg, data) {
+      console.log("da mf1", msg, data);
+    });
+
     if (isInit) {
       isInit = false;
-      _mf_conf_json__WEBPACK_IMPORTED_MODULE_5__.listening.forEach(function (event) {
-        _ClientHandler__WEBPACK_IMPORTED_MODULE_3__["default"].subscribe({
-          id: _mf_conf_json__WEBPACK_IMPORTED_MODULE_5__.id,
+      _mf_conf_json__WEBPACK_IMPORTED_MODULE_4__.listening.forEach(function (event) {
+        Handler.subscribe({
+          id: _mf_conf_json__WEBPACK_IMPORTED_MODULE_4__.id,
           eventId: event,
           callback: function callback(data) {
             return setLastTopic({
@@ -59,7 +79,7 @@ var App = function App() {
               message: data
             });
           }
-        }, _hash_json__WEBPACK_IMPORTED_MODULE_4__.hash);
+        }, _hash_json__WEBPACK_IMPORTED_MODULE_3__.hash);
       });
     }
   }, []);
@@ -68,78 +88,119 @@ var App = function App() {
       setTopics([].concat((0,_babel_runtime_helpers_toConsumableArray__WEBPACK_IMPORTED_MODULE_0__["default"])(topics), [lastTopic]));
     }
   }, [lastTopic]);
+
+  var renderErrorMessage = function renderErrorMessage(name) {
+    return name === errorMessages.name && /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+      className: "error"
+    }, errorMessages.message);
+  };
+
   return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-    id: _mf_conf_json__WEBPACK_IMPORTED_MODULE_5__.id + "_container",
+    id: "1664114058406_container",
     style: {
-      margin: "2px",
       display: "flex",
       flexDirection: "column",
-      width: "200px",
-      padding: "3px",
+      padding: "30px",
+      width: "400px",
+      margin: "0 auto",
       border: "1px solid black"
     }
-  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("h1", null, "MF1"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("textarea", {
-    value: message,
-    onChange: function onChange(e) {
-      return setMessage(e.target.value);
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+    className: "form"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("form", {
+    onSubmit: function onSubmit(e) {
+      e.preventDefault();
+      ExternalInstance.push({
+        callback: function callback(data) {
+          Handler.publish({
+            eventId: "e1",
+            id: "mf1",
+            message: data.toString()
+          }, _hash_json__WEBPACK_IMPORTED_MODULE_3__.hash);
+        },
+        data: {
+          username: "Marco",
+          password: "Garofalo"
+        },
+        eventId: "LOGIN"
+      });
     }
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("button", {
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+    className: "input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("label", null, "Username "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("input", {
+    type: "text",
+    name: "uname"
+  }), renderErrorMessage("uname")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+    className: "input-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("label", null, "Password "), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("input", {
+    type: "password",
+    name: "pass"
+  }), renderErrorMessage("pass")), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
+    className: "button-container"
+  }, /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("input", {
+    type: "submit"
+  }))), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("button", {
     onClick: function onClick() {
-      console.log("chiamo publish");
-      _ClientHandler__WEBPACK_IMPORTED_MODULE_3__["default"].publish({
-        eventId: "e1",
-        id: _mf_conf_json__WEBPACK_IMPORTED_MODULE_5__.id,
-        message: message
-      }, _hash_json__WEBPACK_IMPORTED_MODULE_4__.hash);
+      var initialTime = Date.now();
+      console.log(initialTime);
+      ExternalInstance.push({
+        data: null,
+        callback: function callback(data) {
+          var finalTime = Date.now();
+        },
+        eventId: "GEODATA"
+      });
     }
-  }, "Send Event"), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("h1", null, "Messages"), topics.map(function (topic, i) {
-    return /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("div", {
-      key: topic.eventId + _mf_conf_json__WEBPACK_IMPORTED_MODULE_5__.id + i
-    }, topic.eventId, " - ", topic.message);
-  }), /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_2__.createElement("button", {
-    onClick: function onClick() {
-      return _ClientHandler__WEBPACK_IMPORTED_MODULE_3__["default"].getTimes();
-    }
-  }, "getTimes"));
+  }, "t")));
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (App);
 
 /***/ }),
 
-/***/ "./mf/mf1/src/index.tsx":
-/*!******************************!*\
-  !*** ./mf/mf1/src/index.tsx ***!
-  \******************************/
-/***/ ((module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+/***/ "./tmp/mf/mf1/src/index.tsx":
+/*!**********************************!*\
+  !*** ./tmp/mf/mf1/src/index.tsx ***!
+  \**********************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_hot_ts__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-hot-ts */ "./node_modules/react-hot-ts/index.js");
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
 /* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.css */ "./mf/mf1/src/index.css");
-/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App */ "./mf/mf1/src/App.tsx");
+/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./index.css */ "./tmp/mf/mf1/src/index.css");
+/* harmony import */ var _App__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./App */ "./tmp/mf/mf1/src/App.tsx");
+/* harmony import */ var Engine__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! Engine */ "./Engine.ts");
 /* module decorator */ module = __webpack_require__.hmd(module);
 
 
 
 
 
-(0,react_hot_ts__WEBPACK_IMPORTED_MODULE_0__.hot)(module)(react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_App__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("mf1", 'mf1')));
+
+var Engine = window['Engine'];
+var MF1 = new Engine__WEBPACK_IMPORTED_MODULE_5__.MicroFrontend("mf1", function () {
+  return (0,react_hot_ts__WEBPACK_IMPORTED_MODULE_0__.hot)(module)(react_dom__WEBPACK_IMPORTED_MODULE_2__.render( /*#__PURE__*/react__WEBPACK_IMPORTED_MODULE_1__.createElement(_App__WEBPACK_IMPORTED_MODULE_4__["default"], null), document.getElementById("mf1", "mf1")));
+}, function () {
+  return react_dom__WEBPACK_IMPORTED_MODULE_2__.unmountComponentAtNode(document.getElementById("mf1", "mf1"));
+});
+Engine.register(MF1);
 
 /***/ }),
 
-/***/ "./mf/mf1/src/index.css":
-/*!******************************!*\
-  !*** ./mf/mf1/src/index.css ***!
-  \******************************/
-/***/ ((module, __unused_webpack___webpack_exports__, __webpack_require__) => {
+/***/ "./tmp/mf/mf1/src/index.css":
+/*!**********************************!*\
+  !*** ./tmp/mf/mf1/src/index.css ***!
+  \**********************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
     if(true) {
-      // 1663596558168
+      // 1664466424046
       var cssReload = __webpack_require__(/*! ./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js */ "./node_modules/mini-css-extract-plugin/dist/hmr/hotModuleReplacement.js")(module.id, {"locals":false});
       module.hot.dispose(cssReload);
       module.hot.accept(undefined, cssReload);
@@ -6014,6 +6075,373 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 
 	return to;
 };
+
+
+/***/ }),
+
+/***/ "./node_modules/pubsub-js/src/pubsub.js":
+/*!**********************************************!*\
+  !*** ./node_modules/pubsub-js/src/pubsub.js ***!
+  \**********************************************/
+/***/ (function(module, exports, __webpack_require__) {
+
+/* module decorator */ module = __webpack_require__.nmd(module);
+/**
+ * Copyright (c) 2010,2011,2012,2013,2014 Morgan Roderick http://roderick.dk
+ * License: MIT - http://mrgnrdrck.mit-license.org
+ *
+ * https://github.com/mroderick/PubSubJS
+ */
+
+(function (root, factory){
+    'use strict';
+
+    var PubSub = {};
+
+    if (root.PubSub) {
+        PubSub = root.PubSub;
+        console.warn("PubSub already loaded, using existing version");
+    } else {
+        root.PubSub = PubSub;
+        factory(PubSub);
+    }
+    // CommonJS and Node.js module support
+    if (true){
+        if (module !== undefined && module.exports) {
+            exports = module.exports = PubSub; // Node.js specific `module.exports`
+        }
+        exports.PubSub = PubSub; // CommonJS module 1.1.1 spec
+        module.exports = exports = PubSub; // CommonJS
+    }
+    // AMD support
+    /* eslint-disable no-undef */
+    else {}
+
+}(( typeof window === 'object' && window ) || this, function (PubSub){
+    'use strict';
+
+    var messages = {},
+        lastUid = -1,
+        ALL_SUBSCRIBING_MSG = '*';
+
+    function hasKeys(obj){
+        var key;
+
+        for (key in obj){
+            if ( Object.prototype.hasOwnProperty.call(obj, key) ){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * Returns a function that throws the passed exception, for use as argument for setTimeout
+     * @alias throwException
+     * @function
+     * @param { Object } ex An Error object
+     */
+    function throwException( ex ){
+        return function reThrowException(){
+            throw ex;
+        };
+    }
+
+    function callSubscriberWithDelayedExceptions( subscriber, message, data ){
+        try {
+            subscriber( message, data );
+        } catch( ex ){
+            setTimeout( throwException( ex ), 0);
+        }
+    }
+
+    function callSubscriberWithImmediateExceptions( subscriber, message, data ){
+        subscriber( message, data );
+    }
+
+    function deliverMessage( originalMessage, matchedMessage, data, immediateExceptions ){
+        var subscribers = messages[matchedMessage],
+            callSubscriber = immediateExceptions ? callSubscriberWithImmediateExceptions : callSubscriberWithDelayedExceptions,
+            s;
+
+        if ( !Object.prototype.hasOwnProperty.call( messages, matchedMessage ) ) {
+            return;
+        }
+
+        for (s in subscribers){
+            if ( Object.prototype.hasOwnProperty.call(subscribers, s)){
+                callSubscriber( subscribers[s], originalMessage, data );
+            }
+        }
+    }
+
+    function createDeliveryFunction( message, data, immediateExceptions ){
+        return function deliverNamespaced(){
+            var topic = String( message ),
+                position = topic.lastIndexOf( '.' );
+
+            // deliver the message as it is now
+            deliverMessage(message, message, data, immediateExceptions);
+
+            // trim the hierarchy and deliver message to each level
+            while( position !== -1 ){
+                topic = topic.substr( 0, position );
+                position = topic.lastIndexOf('.');
+                deliverMessage( message, topic, data, immediateExceptions );
+            }
+
+            deliverMessage(message, ALL_SUBSCRIBING_MSG, data, immediateExceptions);
+        };
+    }
+
+    function hasDirectSubscribersFor( message ) {
+        var topic = String( message ),
+            found = Boolean(Object.prototype.hasOwnProperty.call( messages, topic ) && hasKeys(messages[topic]));
+
+        return found;
+    }
+
+    function messageHasSubscribers( message ){
+        var topic = String( message ),
+            found = hasDirectSubscribersFor(topic) || hasDirectSubscribersFor(ALL_SUBSCRIBING_MSG),
+            position = topic.lastIndexOf( '.' );
+
+        while ( !found && position !== -1 ){
+            topic = topic.substr( 0, position );
+            position = topic.lastIndexOf( '.' );
+            found = hasDirectSubscribersFor(topic);
+        }
+
+        return found;
+    }
+
+    function publish( message, data, sync, immediateExceptions ){
+        message = (typeof message === 'symbol') ? message.toString() : message;
+
+        var deliver = createDeliveryFunction( message, data, immediateExceptions ),
+            hasSubscribers = messageHasSubscribers( message );
+
+        if ( !hasSubscribers ){
+            return false;
+        }
+
+        if ( sync === true ){
+            deliver();
+        } else {
+            setTimeout( deliver, 0 );
+        }
+        return true;
+    }
+
+    /**
+     * Publishes the message, passing the data to it's subscribers
+     * @function
+     * @alias publish
+     * @param { String } message The message to publish
+     * @param {} data The data to pass to subscribers
+     * @return { Boolean }
+     */
+    PubSub.publish = function( message, data ){
+        return publish( message, data, false, PubSub.immediateExceptions );
+    };
+
+    /**
+     * Publishes the message synchronously, passing the data to it's subscribers
+     * @function
+     * @alias publishSync
+     * @param { String } message The message to publish
+     * @param {} data The data to pass to subscribers
+     * @return { Boolean }
+     */
+    PubSub.publishSync = function( message, data ){
+        return publish( message, data, true, PubSub.immediateExceptions );
+    };
+
+    /**
+     * Subscribes the passed function to the passed message. Every returned token is unique and should be stored if you need to unsubscribe
+     * @function
+     * @alias subscribe
+     * @param { String } message The message to subscribe to
+     * @param { Function } func The function to call when a new message is published
+     * @return { String }
+     */
+    PubSub.subscribe = function( message, func ){
+        if ( typeof func !== 'function'){
+            return false;
+        }
+
+        message = (typeof message === 'symbol') ? message.toString() : message;
+
+        // message is not registered yet
+        if ( !Object.prototype.hasOwnProperty.call( messages, message ) ){
+            messages[message] = {};
+        }
+
+        // forcing token as String, to allow for future expansions without breaking usage
+        // and allow for easy use as key names for the 'messages' object
+        var token = 'uid_' + String(++lastUid);
+        messages[message][token] = func;
+
+        // return token for unsubscribing
+        return token;
+    };
+
+    PubSub.subscribeAll = function( func ){
+        return PubSub.subscribe(ALL_SUBSCRIBING_MSG, func);
+    };
+
+    /**
+     * Subscribes the passed function to the passed message once
+     * @function
+     * @alias subscribeOnce
+     * @param { String } message The message to subscribe to
+     * @param { Function } func The function to call when a new message is published
+     * @return { PubSub }
+     */
+    PubSub.subscribeOnce = function( message, func ){
+        var token = PubSub.subscribe( message, function(){
+            // before func apply, unsubscribe message
+            PubSub.unsubscribe( token );
+            func.apply( this, arguments );
+        });
+        return PubSub;
+    };
+
+    /**
+     * Clears all subscriptions
+     * @function
+     * @public
+     * @alias clearAllSubscriptions
+     */
+    PubSub.clearAllSubscriptions = function clearAllSubscriptions(){
+        messages = {};
+    };
+
+    /**
+     * Clear subscriptions by the topic
+     * @function
+     * @public
+     * @alias clearAllSubscriptions
+     * @return { int }
+     */
+    PubSub.clearSubscriptions = function clearSubscriptions(topic){
+        var m;
+        for (m in messages){
+            if (Object.prototype.hasOwnProperty.call(messages, m) && m.indexOf(topic) === 0){
+                delete messages[m];
+            }
+        }
+    };
+
+    /**
+       Count subscriptions by the topic
+     * @function
+     * @public
+     * @alias countSubscriptions
+     * @return { Array }
+    */
+    PubSub.countSubscriptions = function countSubscriptions(topic){
+        var m;
+        // eslint-disable-next-line no-unused-vars
+        var token;
+        var count = 0;
+        for (m in messages) {
+            if (Object.prototype.hasOwnProperty.call(messages, m) && m.indexOf(topic) === 0) {
+                for (token in messages[m]) {
+                    count++;
+                }
+                break;
+            }
+        }
+        return count;
+    };
+
+
+    /**
+       Gets subscriptions by the topic
+     * @function
+     * @public
+     * @alias getSubscriptions
+    */
+    PubSub.getSubscriptions = function getSubscriptions(topic){
+        var m;
+        var list = [];
+        for (m in messages){
+            if (Object.prototype.hasOwnProperty.call(messages, m) && m.indexOf(topic) === 0){
+                list.push(m);
+            }
+        }
+        return list;
+    };
+
+    /**
+     * Removes subscriptions
+     *
+     * - When passed a token, removes a specific subscription.
+     *
+	 * - When passed a function, removes all subscriptions for that function
+     *
+	 * - When passed a topic, removes all subscriptions for that topic (hierarchy)
+     * @function
+     * @public
+     * @alias subscribeOnce
+     * @param { String | Function } value A token, function or topic to unsubscribe from
+     * @example // Unsubscribing with a token
+     * var token = PubSub.subscribe('mytopic', myFunc);
+     * PubSub.unsubscribe(token);
+     * @example // Unsubscribing with a function
+     * PubSub.unsubscribe(myFunc);
+     * @example // Unsubscribing from a topic
+     * PubSub.unsubscribe('mytopic');
+     */
+    PubSub.unsubscribe = function(value){
+        var descendantTopicExists = function(topic) {
+                var m;
+                for ( m in messages ){
+                    if ( Object.prototype.hasOwnProperty.call(messages, m) && m.indexOf(topic) === 0 ){
+                        // a descendant of the topic exists:
+                        return true;
+                    }
+                }
+
+                return false;
+            },
+            isTopic    = typeof value === 'string' && ( Object.prototype.hasOwnProperty.call(messages, value) || descendantTopicExists(value) ),
+            isToken    = !isTopic && typeof value === 'string',
+            isFunction = typeof value === 'function',
+            result = false,
+            m, message, t;
+
+        if (isTopic){
+            PubSub.clearSubscriptions(value);
+            return;
+        }
+
+        for ( m in messages ){
+            if ( Object.prototype.hasOwnProperty.call( messages, m ) ){
+                message = messages[m];
+
+                if ( isToken && message[value] ){
+                    delete message[value];
+                    result = value;
+                    // tokens are unique, so we can just stop here
+                    break;
+                }
+
+                if (isFunction) {
+                    for ( t in message ){
+                        if (Object.prototype.hasOwnProperty.call(message, t) && message[t] === value){
+                            delete message[t];
+                            result = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        return result;
+    };
+}));
 
 
 /***/ }),
@@ -32429,12 +32857,11 @@ if (false) {} else {
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
-var __webpack_unused_export__;
 
 /*
  * React hot reload runtime
  */
-__webpack_unused_export__ = ({ value: true });
+Object.defineProperty(exports, "__esModule", ({ value: true }));
 // supporting either `react-proxy` or `react-stand-in` aliasing for ES6
 var reactProxy = __webpack_require__(/*! react-proxy */ "./node_modules/react-proxy/modules/index.js");
 var createProxy = reactProxy.default || reactProxy.createProxy;
@@ -32449,7 +32876,7 @@ function listen(cb) {
         resetTimer();
     updateCallback = cb;
 }
-__webpack_unused_export__ = listen;
+exports.listen = listen;
 /** Hot update helper */
 function hot(module, accept) {
     if (accept) {
@@ -32486,7 +32913,7 @@ function register(type, name, fileName) {
         resetTimer();
     }
 }
-__webpack_unused_export__ = register;
+exports.register = register;
 function resetTimer() {
     clearTimeout(updateTimer);
     updateTimer = window.setTimeout(notify, 100);
@@ -36658,6 +37085,7 @@ if (false) {} else {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _arrayLikeToArray)
 /* harmony export */ });
@@ -36680,6 +37108,7 @@ function _arrayLikeToArray(arr, len) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _arrayWithHoles)
 /* harmony export */ });
@@ -36696,6 +37125,7 @@ function _arrayWithHoles(arr) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _arrayWithoutHoles)
 /* harmony export */ });
@@ -36714,6 +37144,7 @@ function _arrayWithoutHoles(arr) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _iterableToArray)
 /* harmony export */ });
@@ -36730,6 +37161,7 @@ function _iterableToArray(iter) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _iterableToArrayLimit)
 /* harmony export */ });
@@ -36772,6 +37204,7 @@ function _iterableToArrayLimit(arr, i) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _nonIterableRest)
 /* harmony export */ });
@@ -36788,6 +37221,7 @@ function _nonIterableRest() {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _nonIterableSpread)
 /* harmony export */ });
@@ -36804,6 +37238,7 @@ function _nonIterableSpread() {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _slicedToArray)
 /* harmony export */ });
@@ -36828,6 +37263,7 @@ function _slicedToArray(arr, i) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _toConsumableArray)
 /* harmony export */ });
@@ -36852,6 +37288,7 @@ function _toConsumableArray(arr) {
 /***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
+__webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ _unsupportedIterableToArray)
 /* harmony export */ });
@@ -36868,32 +37305,32 @@ function _unsupportedIterableToArray(o, minLen) {
 
 /***/ }),
 
-/***/ "./mf/mf1/hash.json":
-/*!**************************!*\
-  !*** ./mf/mf1/hash.json ***!
-  \**************************/
+/***/ "./tmp/mf/mf1/hash.json":
+/*!******************************!*\
+  !*** ./tmp/mf/mf1/hash.json ***!
+  \******************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"hash":"a47c128d6dad442b388bd0608e814613"}');
+module.exports = JSON.parse('{"hash":"c9d5a611e4381c20932e9b8ed65a8fa9"}');
 
 /***/ }),
 
-/***/ "./mf/mf1/mf.conf.json":
-/*!*****************************!*\
-  !*** ./mf/mf1/mf.conf.json ***!
-  \*****************************/
+/***/ "./tmp/mf/mf1/mf.conf.json":
+/*!*********************************!*\
+  !*** ./tmp/mf/mf1/mf.conf.json ***!
+  \*********************************/
 /***/ ((module) => {
 
 "use strict";
-module.exports = JSON.parse('{"id":"mf1","listening":["e3"]}');
+module.exports = JSON.parse('{"id":"mf1","listening":["e3"],"emitting":["e1"],"topics":["device1"]}');
 
 /***/ })
 
 },
 /******/ __webpack_require__ => { // webpackRuntimeModules
 /******/ var __webpack_exec__ = (moduleId) => (__webpack_require__(__webpack_require__.s = moduleId))
-/******/ var __webpack_exports__ = (__webpack_exec__("./mf/mf1/src/index.tsx"), __webpack_exec__("./node_modules/webpack-dev-server/client/index.js?https://localhost:3000"), __webpack_exec__("./node_modules/webpack/hot/dev-server.js"));
+/******/ var __webpack_exports__ = (__webpack_exec__("./tmp/mf/mf1/src/index.tsx"), __webpack_exec__("./node_modules/webpack-dev-server/client/index.js?http://localhost:3000"), __webpack_exec__("./node_modules/webpack/hot/dev-server.js"));
 /******/ }
 ]);
 //# sourceMappingURL=mf1.js.map

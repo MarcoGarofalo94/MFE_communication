@@ -1,4 +1,5 @@
-import Handler,{Channel} from "../../../ClientHandler";
+import Handler, { Channel } from "@client-handler";
+import { EngineClass } from "Engine";
 import React, { useEffect, useState } from "react";
 import cert from "../hash.json";
 import conf from "../mf.conf.json";
@@ -21,19 +22,14 @@ const App: React.FC = () => {
           {
             id: conf.id,
             eventId: event,
-            callback: (data) => setLastTopic({ eventId: event, message: data }),
+            callback: (data) => {
+              setLastTopic({ eventId: event, message: data });
+
+            },
           },
           cert.hash
         );
       });
-       Handler.subscribe(
-          {
-            id: conf.id,
-            eventId: 'e5',
-            callback: (data) => setLastTopic({ eventId: 'e5', message: data }),
-          },
-          cert.hash
-        );
     }
   }, []);
 
@@ -45,11 +41,11 @@ const App: React.FC = () => {
 
   return (
     <div
-      id={conf.id+"_container"}
+      id="container"
       style={{
         border: "1px solid black",
         margin: "3px",
-        width: "200px",
+        width: "100%",
         display: "flex",
         flexDirection: "column",
       }}>
@@ -73,9 +69,12 @@ const App: React.FC = () => {
         }}>
         showSub
       </button>
+
       <button
         onClick={() => {
-          console.log((document as any).getElementById(conf.id+"_container", conf.id));
+          console.log(
+            (document as any).getElementById(conf.id + "_container", conf.id)
+          );
         }}>
         getElementById
       </button>

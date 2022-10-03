@@ -9,7 +9,7 @@ module.exports = merge(dev, {
   
   devServer: {
     disableHostCheck: true,
-    https: true,
+    https: false,
     contentBase: path.join(__dirname, "build"),
     open: true,
     openPage: `https://localhost:${3000}/`,

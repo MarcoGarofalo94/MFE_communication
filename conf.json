@@ -1,0 +1,16 @@
+{
+  "regions": [
+    {
+      "id": "header",
+      "mfs": ["mf4"]
+    },
+    {
+      "id": "content",
+      "mfs": ["mf1","mf2"]
+    },
+    {
+      "id": "sidebar",
+      "mfs": ["mf3"]
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "onInit": {
+    "render": ["mf1"],
+    "unmount": []
+  },
+  "states": [
+    {
+      "id": "state1",
+      "trigger": "e1",
+      "render": ["mf2", "mf3", "mf4"],
+      "unmount": ["mf1"]
+    },
+    {
+      "id": "state2",
+      "trigger": "e4",
+      "render": ["mf1"],
+      "unmount": ["mf2", "mf3", "mf4"]
+    },
+    {
+      "id": "state3",
+      "trigger": "e3",
+      "render": [],
+      "unmount": ["mf2"]
+    },
+    {
+      "id": "state3",
+      "trigger": "e3",
+      "render": ["mf1"],
+      "unmount": []
+    },
+    {
+      "id": "state3",
+      "trigger": "e5",
+      "render": ["mf2"],
+      "unmount": []
+    },
+    {
+      "id": "state3",
+      "trigger": "e5",
+      "render": [],
+      "unmount": ["mf1"]
+    }
+  ]
+}

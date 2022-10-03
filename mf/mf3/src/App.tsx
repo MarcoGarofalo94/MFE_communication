@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Channel from "../../../ClientHandler";
+import Channel from "@client-handler";
 import cert from "../hash.json";
 import conf from "../mf.conf.json";
 Channel.getSubscriptions();
@@ -37,7 +37,7 @@ const App: React.FC = () => {
   }, [lastTopic]);
   return (
     <div
-      id={conf.id+"_container"}
+      id="container"
       style={{
         margin: "2px",
         display: "flex",

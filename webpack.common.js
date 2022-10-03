@@ -1,35 +1,52 @@
 const path = require("path");
+const fs = require("fs");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const TsconfigPathsPlugin = require("tsconfig-paths-webpack-plugin");
+const buffer = require("buffer");
 const rhTransformer = require("react-hot-ts/lib/transformer");
 const webpack = require("webpack");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const TerserPlugin = require("terser-webpack-plugin");
+const entryList = JSON.parse(
+  fs.readFileSync("./entries.json", { encoding: "utf-8" })
+);
+
+let entries = entryList.reduce((p, value) => {
+  let matches = value.match(/mf[0-9]+/);
+  console.log(matches);
+  return Object.assign(p, {
+    [matches[0]]: {
+      import: [path.join(__dirname, value.replace("./", ""), "index.tsx")],
+      dependOn: "engine",
+    },
+  });
+}, {});
+
+console.log("entries", entries);
+
 module.exports = {
   entry: {
-    mf1: {
-      import: [path.join(__dirname, "mf/mf1/src", "index.tsx")],
-      dependOn: "handler",
+    ...entries,
+    mf4: {
+      import: [
+        path.join(__dirname, "mf/mf4/dist/app/main.js"),
+        path.join(__dirname, "mf/mf4/dist/app/polyfills.js"),
+        path.join(__dirname, "mf/mf4/dist/app/runtime.js"),
+      ],
+      dependOn: "engine",
     },
-    mf2: {
-      import: [path.join(__dirname, "mf/mf2/src", "index.tsx")],
-      dependOn: "handler",
-    },
-    mf3: {
-      import: [path.join(__dirname, "mf/mf3/src", "index.tsx")],
-      dependOn: "handler",
-    },
-    handler: [path.join(__dirname, "ClientHandler.ts")],
+    engine: [
+      path.join(__dirname, "ClientHandler.ts"),
+      path.join(__dirname, "Engine.ts"),
+      path.join(__dirname, "External.ts"),
+    ],
   },
   experiments: {
     topLevelAwait: true,
   },
   target: "web",
-  optimization: {
-    usedExports: true,
-    minimizer: [new TerserPlugin()],
-  },
+
   output: {
     path: path.resolve(__dirname, "./build/js"),
     publicPath: "/",
@@ -44,7 +61,7 @@ module.exports = {
       }),
     ],
     extensions: [".js", ".jsx", ".json", ".ts", ".tsx", ".css", ".scss"],
-    symlinks: false,
+    symlinks: true,
   },
   module: {
     rules: [
@@ -117,15 +134,17 @@ module.exports = {
     ],
   },
   plugins: [
-    //new CleanWebpackPlugin({ verbose: true }),
+    new webpack.ProvidePlugin({
+      Buffer: ["buffer", "Buffer"],
+    }),
     new MiniCssExtractPlugin({
       filename: "../css/[name].css",
       chunkFilename: "../css/[id].css",
     }),
     new HtmlWebpackPlugin({
       filename: "/build/index.html",
-      template: "templates/index.html",
-      inject: true,
+      template: "composedTemplate.html",
+      inject: "body",
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

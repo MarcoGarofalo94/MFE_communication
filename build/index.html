@@ -4,14 +4,45 @@
     <meta charset="utf-8" />
     <title>Webpack App</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link href="/js/../css/mf1.css" rel="stylesheet" />
-    <link href="/js/../css/mf2.css" rel="stylesheet" />
-  <link href="/../css/mf1.css" rel="stylesheet"><link href="/../css/mf2.css" rel="stylesheet"><link href="/../css/mf3.css" rel="stylesheet"></head>
+    <link href="./css/mf1.css" rel="stylesheet" />
+    <style>
+      #header {
+        background-color: cornflowerblue;
+        display: flex;
+        justify-content: flex-end;
+      }
+
+      #content {
+        width: 100%;
+      }
+      #sidebar {
+        width: 20%;
+      }
+      #wrapper {
+        display: flex;
+        justify-content: space-between;
+
+        align-items: center;
+      }
+      div {
+        width: 100%;
+      }
+    </style>
+  </head>
   <body>
-    <div style="display: flex; justify-content: center; align-items: center; height: 100vh;">
-      <div id="mf1"></div>
-      <div id="mf2"></div>
-      <div id="mf3"></div>
+    <div id="header"><ang-mf id="mf4"></ang-mf></div>
+    <div id="wrapper">
+      <div id="content">
+        <div id="mf1"></div>
+        <div id="mf2"></div>
+      </div>
+      <div id="sidebar"><div id="mf3"></div></div>
     </div>
-  <script src="/mf1.js"></script><script src="/mf2.js"></script><script src="/mf3.js"></script><script src="/handler.js"></script></body>
+  </body>
+  <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+  <script src="./js/engine.js"></script>
+  <script src="./js/mf1.js"></script>
+  <script src="./js/mf2.js"></script>
+  <script src="./js/mf3.js"></script>
+  <script src="./js/mf4.js"></script>
 </html>

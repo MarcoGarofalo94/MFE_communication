@@ -1,0 +1,6 @@
+{
+  "id": "mf2",
+  "listening": ["e1", "e3"],
+  "emitting": ["e2"],
+  "topics": ["geodata"]
+}

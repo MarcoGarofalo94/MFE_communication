@@ -2,10 +2,11 @@
   "include": ["app/", "common", "."],
   "compilerOptions": {
     // "types": ["jest"],
-    "module": "esnext",
+    "module": "ESNext",
     "moduleResolution": "node",
     "noImplicitUseStrict": true,
     "experimentalDecorators": true,
+    
     "forceConsistentCasingInFileNames": true,
     "jsx": "react",
     "baseUrl": "./",
@@ -14,6 +15,7 @@
       "@utils/*": ["common/utils/*"],
       "@config/*": ["common/config/*"],
       "@models/*": ["common/models/*"],
+      "@client-handler":["ClientHandler.ts"],
       "@common-components/*": ["common/components/*"],
       "@nextcloud/js": ["common/utils/nextcloud"]
     },
